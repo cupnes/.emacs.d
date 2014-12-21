@@ -250,13 +250,11 @@
 (global-set-key (kbd "C-M-%") 'query-replace)
 
 ;; ** Function keys
-;; (global-set-key (kbd "<f1>") 'yashi/org-agenda)
 (global-set-key (kbd "<f2>") 'recompile)
 (global-set-key (kbd "<f3>") 'compile)
 (global-set-key (kbd "<f4>") 'speedbar-get-focus)
 (global-set-key (kbd "S-<f4>") 'delete-frame)
 (global-set-key (kbd "<f5>") 'magit-status)
-;; (global-set-key (kbd "<f6>") 'yashi/deft-new-file)
 (global-set-key (kbd "<f8>") 'deft)
 
 ;; ** Control (Very Fast & Repeatable)
@@ -284,9 +282,6 @@
 ;; *** C-c Shift (Two Tempo)
 ;; (global-set-key (kbd "C-c G") 'google-this)
 ;; (global-set-key (kbd "C-c I") 'find-user-init-file)
-
-;; *** C-h
-;; (global-set-key (kbd "C-h o") 'yashi/info-org-manual)
 
 ;; *** C-x
 (global-set-key (kbd "C-x C-b") 'ibuffer)
