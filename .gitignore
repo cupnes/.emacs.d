@@ -1,0 +1,6 @@
+*~
+*.elc
+*.dat
+history
+auto-save-list
+.cask
