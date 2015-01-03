@@ -139,7 +139,7 @@
   (when (one-window-p)
     (split-window-horizontally))
   (other-window 1))
-(define-key global-map (kbd "C-t") 'other-window-or-split)
+;; (define-key global-map (kbd "C-t") 'other-window-or-split)
 
 ;; http://d.hatena.ne.jp/naoya/20140424/1398318293
 ;; cask
