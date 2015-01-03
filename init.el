@@ -117,6 +117,10 @@
 (unless (server-running-p)
   (server-start))
 
+;; org-modeの設定
+(setq org-todo-keywords
+	  '((sequence "TODO(t)" "STARTED(s)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)")))
+
 ;======================================================================
 ; 追加外部スクリプトに関する設定(Caskで管理)
 ;======================================================================
