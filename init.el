@@ -121,6 +121,14 @@
 (setq org-todo-keywords
 	  '((sequence "TODO(t)" "STARTED(s)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)")))
 
+;; python-modeの設定
+(add-hook 'python-mode-hook
+		  '(lambda()
+			 (setq indent-tabs-mode t)
+			 (setq indent-level 4)
+			 (setq python-indent 4)
+			 (setq tab-width 4)))
+
 ;======================================================================
 ; 追加外部スクリプトに関する設定(Caskで管理)
 ;======================================================================
