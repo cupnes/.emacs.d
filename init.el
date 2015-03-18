@@ -129,6 +129,10 @@
 			 (setq python-indent 4)
 			 (setq tab-width 4)))
 
+;; Browse Urlの設定
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "~/firefox/firefox")
+
 ;======================================================================
 ; 追加外部スクリプトに関する設定(Caskで管理)
 ;======================================================================
