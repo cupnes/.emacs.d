@@ -6,3 +6,5 @@ auto-save-list
 .cask
 tramp
 .org-id-locations
+ido.last
+recentf
