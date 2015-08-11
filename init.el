@@ -81,23 +81,31 @@
 ;; ミニバッファの履歴の保存数を増やす
 (setq history-length 3000)
 
-;; http://seesaawiki.jp/whiteflare503/d/Emacs%20インデント
-(setq-default c-basic-offset 4     ;;基本インデント量4
-              tab-width 4          ;;タブ幅4
-              indent-tabs-mode t)  ;;インデントをタブでするかスペースでするか
+;; ;; http://seesaawiki.jp/whiteflare503/d/Emacs%20インデント
+;; (setq-default c-basic-offset 4     ;;基本インデント量4
+;;               tab-width 4          ;;タブ幅4
+;;               indent-tabs-mode t)  ;;インデントをタブでするかスペースでするか
 
 ;; ;; デフォルトのタブ幅を半角スペース4つ分に
 ;; (setq default-tab-width 4)
 
 ;; c-modeの設定
-(setq c-default-style "linux"
-	c-basic-offset 4)
+;; (setq c-default-style "linux"
+;; 	c-basic-offset 4)
 ;; - http://d.hatena.ne.jp/syohex/20110624/1308871777
 ;; 	c-modeの自動インデントをデフォルトで無効化
 ;; 	有効/無効はC-c C-lで切り替え
 ;; (add-hook 'c-mode-hook
 ;; 	'(lambda ()
 ;; 		(c-toggle-electric-state -1)))
+(add-hook 'c-mode-common-hook
+		  (lambda ()
+			;; (require 'recompile-on-save)
+			;; (recompile-on-save-advice compile)
+			;; (highlight-symbol-mode 1)
+			(c-set-style "linux")
+			;; (ggtags-mode 1)
+			))
 
 ;; view-modeの設定
 (require 'view)
@@ -253,6 +261,16 @@
 ;; undo-tree
 (require 'undo-tree)
 (global-undo-tree-mode)
+
+;; Wanderlust
+;; http://opamp.hatenablog.jp/entry/2015/01/07/210407
+(autoload 'wl "wl" "Wanderlust" t)
+(autoload 'wl-draft "wl" "Write draft with Wanderlust." t)
+
+;; magit
+(add-hook 'magit-mode-hook
+		  (lambda ()
+			(set-face-attribute 'magit-item-highlight nil :inherit :unspecified)))
 
 ;======================================================================
 ; global-set-key設定

@@ -12,3 +12,4 @@
 (depends-on "expand-region")
 (depends-on "undo-tree")
 (depends-on "markdown-mode")
+(depends-on "wanderlust")
