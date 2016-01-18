@@ -322,7 +322,7 @@
 
 ;; *** C-x
 (global-set-key (kbd "C-x C-b") 'ibuffer)
-;; (global-set-key (kbd "C-x C-r") 'ido-recentf-open)
+(global-set-key (kbd "C-x C-r") 'recentf-open-files)
 ;; (global-set-key (kbd "C-x C-v") 'ido-view-file)
 ;; (global-set-key (kbd "C-x 1") 'zygospore-toggle-delete-other-windows)
 
