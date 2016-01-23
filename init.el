@@ -268,9 +268,9 @@
 (autoload 'wl-draft "wl" "Write draft with Wanderlust." t)
 
 ;; magit
-(add-hook 'magit-mode-hook
-		  (lambda ()
-			(set-face-attribute 'magit-item-highlight nil :inherit :unspecified)))
+;; (add-hook 'magit-mode-hook
+;; 		  (lambda ()
+;; 			(set-face-attribute 'magit-item-highlight nil :inherit :unspecified)))
 
 ;======================================================================
 ; global-set-key設定
