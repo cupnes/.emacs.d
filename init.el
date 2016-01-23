@@ -314,6 +314,7 @@
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c s") 'magit-status)
 (global-set-key (kbd "C-c v") 'org-agenda) ;; because org-agenda
+(global-set-key (kbd "C-c r") 'recentf-open-files)
 ;; should be named org-*v*iew
 
 ;; *** C-c Shift (Two Tempo)
@@ -322,7 +323,6 @@
 
 ;; *** C-x
 (global-set-key (kbd "C-x C-b") 'ibuffer)
-(global-set-key (kbd "C-x C-r") 'recentf-open-files)
 ;; (global-set-key (kbd "C-x C-v") 'ido-view-file)
 ;; (global-set-key (kbd "C-x 1") 'zygospore-toggle-delete-other-windows)
 
