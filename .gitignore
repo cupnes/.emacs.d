@@ -1,6 +1,7 @@
 *~
 *.elc
 *.dat
+*.log
 history
 auto-save-list
 .cask
