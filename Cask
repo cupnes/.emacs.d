@@ -1,6 +1,5 @@
 (source gnu)
 (source melpa)
-(source marmalade)
 
 (depends-on "gtags" :git "https://github.com/voins/gtags.git")
 (depends-on "auto-complete")
