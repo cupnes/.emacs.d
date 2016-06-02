@@ -272,6 +272,9 @@
 ;; 		  (lambda ()
 ;; 			(set-face-attribute 'magit-item-highlight nil :inherit :unspecified)))
 
+;; org-textile
+(require 'ox-textile)
+
 ;======================================================================
 ; global-set-key設定
 ;======================================================================

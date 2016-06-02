@@ -13,3 +13,4 @@
 (depends-on "undo-tree")
 (depends-on "markdown-mode")
 (depends-on "wanderlust")
+(depends-on "ox-textile" :git "https://github.com/yashi/org-textile.git")
