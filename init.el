@@ -177,7 +177,8 @@
 		(local-set-key "\M-r" 'gtags-find-rtag)		; 関数の参照元へ
 		(local-set-key "\M-s" 'gtags-find-symbol)	; 変数の定義元/参照先へ
 		(local-set-key "\M-f" 'gtags-find-file)		; ファイルにジャンプ
-		(local-set-key "\C-t" 'gtags-pop-stack)))	; 前のバッファに戻る
+		(local-set-key "\C-t" 'gtags-pop-stack)		; 前のバッファに戻る
+		(local-set-key "\M-T" 'gtags-pop-stack)))	; 前のバッファに戻る(emacsをシェル内で起動し、C-tがscreenに取られている時)
 ;; (add-hook 'gtags-mode-hook
 ;;   '(lambda ()
 ;;         ; Local customization (overwrite key mapping)
