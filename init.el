@@ -16,7 +16,7 @@
 ;;
 ;; fc-query /usr/share/fonts/opentype/ipafont-gothic/ipag.ttf
 ;; の結果、"spacing: 90(i)(s)"と出ていたので、"spacing=90"へ変更
-(set-default-font "IPAGothic:pixelsize=13:spacing=90")
+(set-default-font "IPAGothic:pixelsize=14:spacing=90")
 
 (mouse-wheel-mode)					;;ホイールマウス
 (global-font-lock-mode t)				;;文字の色つけ
