@@ -162,6 +162,53 @@ prefer for `sh-mode'.  It is automatically added to
         sh-indent-for-case-alt '+))
 (add-hook 'sh-mode-hook 'gker-setup-sh-mode)
 
+;; eww
+;; http://emacs.rubikitch.com/eww-nocolor/
+(require 'eww)
+;;; [2014-11-17 Mon]背景・文字色を無効化する
+(defvar eww-disable-colorize t)
+(defun shr-colorize-region--disable (orig start end fg &optional bg &rest _)
+  (unless eww-disable-colorize
+    (funcall orig start end fg)))
+(advice-add 'shr-colorize-region :around 'shr-colorize-region--disable)
+(advice-add 'eww-colorize-region :around 'shr-colorize-region--disable)
+(defun eww-disable-color ()
+  "ewwで文字色を反映させない"
+  (interactive)
+  (setq-local eww-disable-colorize t)
+  (eww-reload))
+(defun eww-enable-color ()
+  "ewwで文字色を反映させる"
+  (interactive)
+  (setq-local eww-disable-colorize nil)
+  (eww-reload))
+;; http://www-he.scphys.kyoto-u.ac.jp/member/shotakaha/dokuwiki/doku.php?id=toolbox:emacs:eww:start
+;; (use-package eww
+;;   :config
+;;   (bind-keys :map eww-mode-map
+;;              ("h" . backward-char)
+;;              ("j" . next-line)
+;;              ("k" . previous-line)
+;;              ("l" . forward-char)
+;;              ("J" . View-scroll-line-forward)  ;; カーソルは移動せず、画面がスクロースする
+;;              ("K" . View-scroll-line-backward)
+;;              ("s-[" . eww-back-url)
+;;              ("s-]" . eww-forward-url)
+;;              ("s-{" . previous-buffer)
+;;              ("s-}" . next-buffer)
+;;              )
+;;   )
+(define-key eww-mode-map (kbd "h") 'backward-char)
+(define-key eww-mode-map (kbd "j") 'next-line)
+(define-key eww-mode-map (kbd "k") 'previous-line)
+(define-key eww-mode-map (kbd "l") 'forward-char)
+(define-key eww-mode-map (kbd "J") 'View-scroll-line-forward)
+(define-key eww-mode-map (kbd "K") 'View-scroll-line-backward)
+(define-key eww-mode-map (kbd "s-[") 'eww-back-url)
+(define-key eww-mode-map (kbd "s-]") 'eww-forward-url)
+(define-key eww-mode-map (kbd "s-{") 'previous-buffer)
+(define-key eww-mode-map (kbd "s-}") 'next-buffer)
+
 ;======================================================================
 ; 追加外部スクリプトに関する設定(Caskで管理)
 ;======================================================================
