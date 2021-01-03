@@ -1,6 +1,13 @@
 ;======================================================================
 ; 追加外部スクリプトに依存しない設定
 ;======================================================================
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (when (equal emacs-major-version 21) (require 'un-define))
 (set-language-environment "Japanese")
 (set-terminal-coding-system 'utf-8)
@@ -142,7 +149,7 @@
 
 ;; Browse Urlの設定
 (setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "~/firefox/firefox")
+      browse-url-generic-program "firefox")
 
 ;; sh-modeの設定
 ;; https://keramida.wordpress.com/2008/08/08/tweaking-shell-script-indentation-in-gnu-emacs/
@@ -208,6 +215,39 @@ prefer for `sh-mode'.  It is automatically added to
 (define-key eww-mode-map (kbd "s-]") 'eww-forward-url)
 (define-key eww-mode-map (kbd "s-{") 'previous-buffer)
 (define-key eww-mode-map (kbd "s-}") 'next-buffer)
+
+;; Diredの設定
+;; https://kakurasan.blogspot.com/2015/05/dired-filemanager-renamer.html
+(add-hook 'dired-load-hook
+'(lambda ()
+   ;; ディレクトリを再帰的にコピー可能にする
+   (setq dired-recursive-copies 'always)
+
+   ;; ディレクトリを確認なしで再帰的に削除可能にする(使用する場合は注意)
+				;(setq dired-recursive-deletes 'always)
+   ;; 対象の最上位ディレクトリごとに確認が出る形
+   (setq dired-recursive-deletes 'top)
+
+   ;; lsのオプションを指定 (詳しくはlsのmanページなどを参照)
+   ;; Windows以外向け
+   ;; "l" (小文字のエル)は必須
+   ;; ディレクトリをファイルよりも上に表示するには
+   ;;   "--group-directories-first" を含める
+   ;; 出力される日時の形式を "YYYY-MM-DD hh:mm" にするには
+   ;;   "--time-style=long-iso" を含める
+   (setq dired-listing-switches "-Flha --time-style=long-iso --group-directories-first")   ; "." と ".." が必要な場合
+				;(setq dired-listing-switches "-GFlha --time-style=long-iso --group-directories-first") ; グループ表示が不要な場合
+				;(setq dired-listing-switches "-FlhA --time-style=long-iso --group-directories-first")  ; "." と ".." が不要な場合
+
+   ;; find-dired/find-grep-diredで、条件に合ったファイルを一覧する際の出力形式
+   ;; ([findのオプション(出力に関係するもの)] . [LSのオプション(出力解析上の指定)])
+   (setq find-ls-option '("-print0 | xargs -0 ls -Flhatd --time-style=long-iso" . "-Flhatd --time-style=long-iso"))
+
+   ;; 新規バッファを作らずに移動するコマンド "dired-find-alternate-file" は
+   ;; 標準では無効化されているので、使用したい場合は下の記述で有効にする
+   (put 'dired-find-alternate-file 'disabled nil)
+   )
+)
 
 ;======================================================================
 ; 追加外部スクリプトに関する設定(Caskで管理)
@@ -414,3 +454,5 @@ prefer for `sh-mode'.  It is automatically added to
 ;; ** other
 ;; (global-set-key (kbd "C-M-%") 'vr/replace)
 ;; (global-set-key (kbd "C-M-S-k") 'kill-eob)
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
