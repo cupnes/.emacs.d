@@ -7,6 +7,11 @@
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
 (package-initialize)
+;; https://qiita.com/Aten_Ha_Ra/items/71a4a5d1cb352b802843
+(setq package-archives
+      '(("gnu"   . "https://elpa.gnu.org/packages/")
+	("melpa" . "https://melpa.org/packages/")
+	("org"   . "https://orgmode.org/elpa/")))
 
 (when (equal emacs-major-version 21) (require 'un-define))
 (set-language-environment "Japanese")
@@ -38,10 +43,15 @@
 (show-paren-mode t)
 (setq show-paren-style 'mixed)
 ;(set-face-background 'show-paren-match-face "gray10")
-(set-face-background 'show-paren-match-face "lawn green")
-(set-face-foreground 'show-paren-match-face "light sea green")
-(set-face-background 'show-paren-mismatch-face "magenta")
-(set-face-foreground 'show-paren-mismatch-face "firebrick")
+;(set-face-background 'show-paren-match-face "lawn green")
+;(set-face-foreground 'show-paren-match-face "light sea green")
+;(set-face-background 'show-paren-mismatch-face "magenta")
+;(set-face-foreground 'show-paren-mismatch-face "firebrick")
+;; show-paren-match-faceは削除された
+;; https://typeinf-memo.blogspot.com/2016/06/emacsshow-paren-match-faceremoved.html
+;; (set-face-attribute 'show-paren-match nil
+;; 		    :background 'unspecified
+;; 		    :underline "turquoise")
 
 ;; ツールバーを表示しない
 (tool-bar-mode 0)
@@ -249,6 +259,10 @@ prefer for `sh-mode'.  It is automatically added to
    )
 )
 
+;; cask initやcask時の"Failed to download ‘gnu’ archive."というエラーの対処
+;; https://francopasut.medium.com/emacs-melpa-and-the-failed-to-download-gnu-archive-error-b834bbe4491e
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+
 ;======================================================================
 ; 追加外部スクリプトに関する設定(Caskで管理)
 ;======================================================================
@@ -271,10 +285,17 @@ prefer for `sh-mode'.  It is automatically added to
 
 ;; http://d.hatena.ne.jp/naoya/20140424/1398318293
 ;; cask
-(require 'cask "~/.cask/cask.el")
-(cask-initialize)
+;; (require 'cask "~/.cask/cask.el")
+;; (cask-initialize)
 
 ;; gtags
+;;
+;; 2021-08-05 現在、
+;; 以下の手順でインストールした
+;; 1. M-x list-packages
+;; 2. "ggtags"にカーソルを合わせる
+;; 3. i で選択
+;; 4. x でインストール
 (autoload 'gtags-mode "gtags" "" t)
 (setq gtags-mode-hook
 	'(lambda ()
@@ -303,11 +324,25 @@ prefer for `sh-mode'.  It is automatically added to
 (setq gtags-auto-update t)
 
 ;; auto-complete-mode
+;;
+;; 2021-08-06 20:36 現在、
+;; 以下の手順でインストールした
+;; 1. M-x list-packages
+;; 2. "auto-complete"にカーソルを合わせる
+;; 3. i で選択
+;; 4. x でインストール
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)
 
 ;; ace-jump-mode
+;;
+;; 2021-08-06 20:28 現在、
+;; 以下の手順でインストールした
+;; 1. M-x list-packages
+;; 2. "ace-jump-mode"にカーソルを合わせる
+;; 3. i で選択
+;; 4. x でインストール
 (autoload
   'ace-jump-mode
   "ace-jump-mode"
@@ -328,12 +363,26 @@ prefer for `sh-mode'.  It is automatically added to
 (define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
 
 ;; ido-vertical-mode
+;;
+;; 2021-08-06 20:55 現在、
+;; 以下の手順でインストールした
+;; 1. M-x list-packages
+;; 2. "ido-vertical-mode"にカーソルを合わせる
+;; 3. i で選択
+;; 4. x でインストール
 (require 'ido-vertical-mode)
 (ido-mode 1)
 (ido-vertical-mode 1)
 
 ;; http://rubikitch.com/2014/09/05/elscreen/
 ;; elscreen
+;;
+;; 2021-08-06 20:11 現在、
+;; 以下の手順でインストールした
+;; 1. M-x list-packages
+;; 2. "elscreen"にカーソルを合わせる
+;; 3. i で選択
+;; 4. x でインストール
 ;;; プレフィクスキーはC-z
 (setq elscreen-prefix-key (kbd "C-z"))
 (elscreen-start)
@@ -365,8 +414,8 @@ prefer for `sh-mode'.  It is automatically added to
 
 ;; http://d.hatena.ne.jp/khiker/20100123/undo_tree
 ;; undo-tree
-(require 'undo-tree)
-(global-undo-tree-mode)
+;; (require 'undo-tree)
+;; (global-undo-tree-mode)
 
 ;; Wanderlust
 ;; http://opamp.hatenablog.jp/entry/2015/01/07/210407
@@ -379,10 +428,10 @@ prefer for `sh-mode'.  It is automatically added to
 ;; 			(set-face-attribute 'magit-item-highlight nil :inherit :unspecified)))
 
 ;; org-textile
-(require 'ox-textile)
+;; (require 'ox-textile)
 
 ;; org-trello
-(require 'org-trello)
+;; (require 'org-trello)
 
 ;======================================================================
 ; global-set-key設定
@@ -456,3 +505,17 @@ prefer for `sh-mode'.  It is automatically added to
 ;; (global-set-key (kbd "C-M-S-k") 'kill-eob)
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (ido-vertical-mode auto-complete ace-jump-mode elscreen ggtags))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
