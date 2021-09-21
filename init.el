@@ -269,6 +269,7 @@ prefer for `sh-mode'.  It is automatically added to
 
 ;======================================================================
 ; 追加外部スクリプトに関する設定(Caskで管理)
+; 2021-09-21現在、Cask未使用
 ;======================================================================
 ;; https://github.com/typester/emacs-config/blob/master/conf/init.el
 ;; % で対応する括弧に移動
@@ -445,6 +446,15 @@ prefer for `sh-mode'.  It is automatically added to
 
 ;; org-trello
 ;; (require 'org-trello)
+
+;; ag
+;;
+;; 2021-09-21 現在、
+;; 以下の手順でインストールした
+;; 1. M-x list-packages
+;; 2. "ag"にカーソルを合わせる
+;; 3. i で選択
+;; 4. x でインストール
 
 ;======================================================================
 ; global-set-key設定
