@@ -28,7 +28,11 @@
 ;;
 ;; fc-query /usr/share/fonts/opentype/ipafont-gothic/ipag.ttf
 ;; の結果、"spacing: 90(i)(s)"と出ていたので、"spacing=90"へ変更
-(set-default-font "IPAGothic:pixelsize=14:spacing=90")
+;; (set-default-font "IPAGothic:pixelsize=14:spacing=90")
+;;
+;; set-default-fontはobsoleteになった。23.1以降はset-default-fontを使う
+;; https://stackoverflow.com/questions/6026713/how-do-i-change-emacs-default-font-size-and-font-type
+(set-frame-font "IPAGothic:pixelsize=14:spacing=90" nil t)
 
 (mouse-wheel-mode)					;;ホイールマウス
 (global-font-lock-mode t)				;;文字の色つけ
@@ -423,9 +427,18 @@ prefer for `sh-mode'.  It is automatically added to
 (autoload 'wl-draft "wl" "Write draft with Wanderlust." t)
 
 ;; magit
+;;
+;; 2021-09-21 現在、
+;; 以下の手順でインストールした
+;; 1. M-x list-packages
+;; 2. "magit"にカーソルを合わせる
+;; 3. i で選択
+;; 4. x でインストール
 ;; (add-hook 'magit-mode-hook
 ;; 		  (lambda ()
 ;; 			(set-face-attribute 'magit-item-highlight nil :inherit :unspecified)))
+;; 2021-09-21現在、↓のエラーが出るので↑はコメントアウト
+;; set-face-attribute: Invalid face: magit-item-highlight
 
 ;; org-textile
 ;; (require 'ox-textile)
@@ -511,8 +524,7 @@ prefer for `sh-mode'.  It is automatically added to
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   (quote
-    (ag ido-vertical-mode auto-complete ace-jump-mode elscreen ggtags))))
+   '(magit ag ido-vertical-mode auto-complete ace-jump-mode elscreen ggtags)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
