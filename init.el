@@ -512,7 +512,7 @@ prefer for `sh-mode'.  It is automatically added to
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (ido-vertical-mode auto-complete ace-jump-mode elscreen ggtags))))
+    (ag ido-vertical-mode auto-complete ace-jump-mode elscreen ggtags))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
