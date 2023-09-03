@@ -267,6 +267,11 @@ prefer for `sh-mode'.  It is automatically added to
 ;; https://francopasut.medium.com/emacs-melpa-and-the-failed-to-download-gnu-archive-error-b834bbe4491e
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
+;; File XXX is large (X.X MiB), really open? (y)es or (n)o or (l)iterally への対処
+;; https://emacsredux.com/blog/2014/05/16/opening-large-files/
+;; warn when opening files bigger than 100MB
+(setq large-file-warning-threshold 100000000)
+
 ;======================================================================
 ; 追加外部スクリプトに関する設定(Caskで管理)
 ; 2021-09-21現在、Cask未使用
