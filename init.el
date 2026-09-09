@@ -272,6 +272,9 @@ prefer for `sh-mode'.  It is automatically added to
 ;; warn when opening files bigger than 100MB
 (setq large-file-warning-threshold 100000000)
 
+;; org-modeのファイルを開いたとき、項目を全て閉じた状態にする
+(setq org-startup-folded t)
+
 ;======================================================================
 ; 追加外部スクリプトに関する設定(Caskで管理)
 ; 2021-09-21現在、Cask未使用
