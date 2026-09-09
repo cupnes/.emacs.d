@@ -539,7 +539,8 @@ prefer for `sh-mode'.  It is automatically added to
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(magit ag ido-vertical-mode auto-complete ace-jump-mode elscreen ggtags)))
+   '(ace-jump-mode ag auto-complete elscreen ggtags ido-vertical-mode
+		   magit)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
